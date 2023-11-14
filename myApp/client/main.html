@@ -4,5 +4,26 @@
 </head>
 
 <body>
-  <div id="react-target"></div>
+  <h1> titre </h1> 
+  {{> chat}} <!-- ###€sd//POURQUOI ?--> 
 </body>
+
+
+<template name="chat"> 
+  {{#each messages}}
+    <p> {{createdAt}} : {{text}}</p> 
+  {{else}}
+    <p> No Messages. </p> 
+  {{/each}}
+
+  <form id="chat-form"> 
+    <p> 
+      <textarea
+        name="text"
+        placeholder="Write a message...">
+      </textarea> 
+    </p> 
+    <p> <input type="submit" value = "Send" /> </p> 
+
+  </form>  
+</template>
