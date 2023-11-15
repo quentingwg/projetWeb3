@@ -1,29 +1,34 @@
 <head>
-  <title>myApp</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-
-<body>
-  <h1> titre </h1> 
-  {{> chat}} <!-- ###€sd//POURQUOI ?--> 
-</body>
-
-
-<template name="chat"> 
-  {{#each messages}}
-    <p> {{createdAt}} : {{text}}</p> 
-  {{else}}
-    <p> No Messages. </p> 
-  {{/each}}
-
-  <form id="chat-form"> 
-    <p> 
-      <textarea
-        name="text"
-        placeholder="Write a message...">
-      </textarea> 
-    </p> 
-    <p> <input type="submit" value = "Send" /> </p> 
-
-  </form>  
-</template>
+    <title>myApp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <!-- pq elle se met comme ca la classe ?--> 
+  <body>
+    <h1> titre </h1> 
+    {{> logginButtons}}
+    <hr/>
+    {{#if currentUser}}
+        {{> chat}} <!-- ###€sd//POURQUOI ?--> 
+    {{else}}
+        <p> Please log in / register</p>
+  </body>
+  
+  
+  <template name="chat"> 
+    {{#each messages}}
+      <p> <b> {{getUsername userId}} </b>{{{ formatDate createdAt}}} : {{text}}</p> <!-- le format date est l'appel aà la fonction cree dans le main-->
+    {{else}}
+      <p> No Messages. </p> 
+    {{/each}}
+  
+    <form id="chat-form"> 
+      <p> 
+        <textarea
+          name="text"
+          placeholder="Write a message...">
+        </textarea> 
+      </p> 
+      <p> <input type="submit" value = "Send" /> </p> 
+  
+    </form>  
+  </template>
